@@ -1,0 +1,1117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* iOS System Colors */
+  --ios-blue: #007AFF;
+  --ios-green: #34C759;
+  --ios-red: #FF3B30;
+  --ios-orange: #FF9500;
+  --ios-yellow: #FFCC00;
+  --ios-purple: #AF52DE;
+  --ios-pink: #FF2D55;
+  --ios-teal: #5AC8FA;
+  --ios-indigo: #5856D6;
+  --ios-gray: #8E8E93;
+  --ios-gray2: #AEAEB2;
+  --ios-gray3: #C7C7CC;
+  --ios-gray4: #D1D1D6;
+  --ios-gray5: #E5E5EA;
+  --ios-gray6: #F2F2F7;
+  
+  /* Material Design Colors */
+  --md-primary: #6200EE;
+  --md-primary-variant: #3700B3;
+  --md-secondary: #03DAC6;
+  --md-secondary-variant: #018786;
+  --md-background: #FFFFFF;
+  --md-surface: #FFFFFF;
+  --md-error: #B00020;
+  --md-on-primary: #FFFFFF;
+  --md-on-secondary: #000000;
+  --md-on-background: #000000;
+  --md-on-surface: #000000;
+  --md-on-error: #FFFFFF;
+  
+  /* Neumorphic Colors */
+  --nm-background: #E0E5EC;
+  --nm-light-shadow: #FFFFFF;
+  --nm-dark-shadow: rgba(163, 177, 198, 0.6);
+  --nm-text: #333333;
+  
+  /* Animation Durations */
+  --fast: 0.2s;
+  --medium: 0.4s;
+  --slow: 0.8s;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.ios-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--ios-gray5);
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, var(--ios-blue), var(--ios-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: var(--ios-gray);
+  font-weight: 400;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  color: #1c1c1e;
+}
+
+/* Navigation */
+.category-nav {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px 0;
+  margin-bottom: 30px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.category-nav::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.nav-button {
+  background-color: var(--ios-gray6);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ios-gray);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.nav-button.active {
+  background-color: var(--ios-blue);
+  color: white;
+}
+
+/* Button Categories */
+.button-category {
+  display: none;
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 16px;
+  background-color: var(--ios-gray6);
+}
+
+.button-category.active {
+  display: block;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.glass-grid {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #a1c4fd);
+  opacity: 0.3;
+  z-index: -1;
+  border-radius: 16px;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.button-label {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--ios-gray);
+}
+
+/* Base Button Styles */
+button {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* iOS Style Buttons */
+.ios-button {
+  background-color: #000000;
+  color: white;
+  letter-spacing: -0.01em;
+}
+
+.ios-button:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* Glow Effects */
+.glow-effect {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 16px;
+  z-index: -1;
+  opacity: 0.7;
+  filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Different Glow Colors */
+.blue-glow {
+  background: linear-gradient(90deg, var(--ios-blue), #5AC8FA);
+  animation: pulse 4s infinite alternate;
+}
+
+.green-glow {
+  background: linear-gradient(90deg, var(--ios-green), #30D158);
+  animation: pulse 4s infinite alternate;
+}
+
+.red-glow {
+  background: linear-gradient(90deg, var(--ios-red), var(--ios-pink));
+  animation: pulse 4s infinite alternate;
+}
+
+.purple-glow {
+  background: linear-gradient(90deg, var(--ios-purple), #BF5AF2);
+  animation: pulse 4s infinite alternate;
+}
+
+.orange-glow {
+  background: linear-gradient(90deg, var(--ios-orange), var(--ios-yellow));
+  animation: pulse 4s infinite alternate;
+}
+
+.teal-glow {
+  background: linear-gradient(90deg, var(--ios-teal), #64D2FF);
+  animation: pulse 4s infinite alternate;
+}
+
+.dark-glow {
+  background: linear-gradient(90deg, #1c1c1e, #2c2c2e);
+  animation: pulse 4s infinite alternate;
+}
+
+.light-glow {
+  background: linear-gradient(90deg, var(--ios-gray5), white);
+  animation: pulse 4s infinite alternate;
+}
+
+/* iOS Button Variants */
+.ios-button.primary {
+  background-color: #000000;
+}
+
+.ios-button.success {
+  background-color: #103C1A;
+}
+
+.ios-button.danger {
+  background-color: #3A0D0C;
+}
+
+.ios-button.warning {
+  background-color: #3A2500;
+}
+
+.ios-button.info {
+  background-color: #003C5A;
+}
+
+.ios-button.secondary {
+  background-color: #2D1A3B;
+}
+
+.ios-button.dark {
+  background-color: #1C1C1E;
+}
+
+.ios-button.light {
+  background-color: #F2F2F7;
+  color: #000000;
+}
+
+/* Material Design Buttons */
+.material-button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+}
+
+.material-button.filled {
+  background-color: var(--md-primary);
+  color: var(--md-on-primary);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.material-button.filled:hover {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.material-button.outlined {
+  background-color: transparent;
+  color: var(--md-primary);
+  border: 2px solid var(--md-primary);
+}
+
+.material-button.text {
+  background-color: transparent;
+  color: var(--md-primary);
+  box-shadow: none;
+}
+
+.material-button.elevated {
+  background-color: var(--md-surface);
+  color: var(--md-primary);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.material-button.tonal {
+  background-color: rgba(98, 0, 238, 0.1);
+  color: var(--md-primary);
+}
+
+.material-button.fab {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--md-secondary);
+  color: var(--md-on-secondary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.material-button.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--md-primary);
+  color: var(--md-on-primary);
+}
+
+.material-button.chip {
+  height: 32px;
+  border-radius: 16px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--ios-gray5);
+  color: var(--ios-gray);
+}
+
+/* Neumorphic Buttons */
+.neumorphic-button {
+  background-color: var(--nm-background);
+  color: var(--nm-text);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-button.raised {
+  box-shadow: 
+    5px 5px 10px var(--nm-dark-shadow),
+    -5px -5px 10px var(--nm-light-shadow);
+}
+
+.neumorphic-button.raised:active {
+  box-shadow: 
+    inset 5px 5px 10px var(--nm-dark-shadow),
+    inset -5px -5px 10px var(--nm-light-shadow);
+}
+
+.neumorphic-button.pressed {
+  box-shadow: 
+    inset 5px 5px 10px var(--nm-dark-shadow),
+    inset -5px -5px 10px var(--nm-light-shadow);
+}
+
+.neumorphic-button.flat {
+  box-shadow: 
+    5px 5px 10px var(--nm-dark-shadow),
+    -5px -5px 10px var(--nm-light-shadow);
+}
+
+.neumorphic-button.concave {
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 
+    5px 5px 10px var(--nm-dark-shadow),
+    -5px -5px 10px var(--nm-light-shadow);
+}
+
+.neumorphic-button.convex {
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  box-shadow: 
+    5px 5px 10px var(--nm-dark-shadow),
+    -5px -5px 10px var(--nm-light-shadow);
+}
+
+.neumorphic-button.circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    5px 5px 10px var(--nm-dark-shadow),
+    -5px -5px 10px var(--nm-light-shadow);
+}
+
+.neumorphic-button.pill {
+  border-radius: 25px;
+  box-shadow: 
+    5px 5px 10px var(--nm-dark-shadow),
+    -5px -5px 10px var(--nm-light-shadow);
+}
+
+.neumorphic-button.toggle {
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  box-shadow: 
+    inset 5px 5px 10px var(--nm-dark-shadow),
+    inset -5px -5px 10px var(--nm-light-shadow);
+}
+
+.toggle-slider {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 
+    3px 3px 5px var(--nm-dark-shadow),
+    -3px -3px 5px var(--nm-light-shadow);
+  transition: transform 0.3s ease;
+}
+
+/* Glassmorphic Buttons */
+.glass-button {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.glass-button.basic {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.glass-button.colored {
+  background: rgba(175, 82, 222, 0.3);
+}
+
+.glass-button.bordered {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-button.gradient {
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.4), 
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+.glass-button.icon-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.glass-button.pill {
+  border-radius: 25px;
+}
+
+.glass-button.frost {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+}
+
+.glass-button.glow {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Animated Buttons */
+.animated-button {
+  background-color: var(--ios-blue);
+  color: white;
+  overflow: hidden;
+}
+
+.animated-button.pulse {
+  animation: buttonPulse 2s infinite;
+}
+
+.animated-button.shake:hover {
+  animation: shake 0.5s;
+}
+
+.animated-button.bounce:hover {
+  animation: bounce 0.5s;
+}
+
+.animated-button.rotate:hover {
+  animation: rotate 0.5s;
+}
+
+.animated-button.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.slide-icon {
+  transform: translateX(-10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.animated-button.slide:hover .slide-icon {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.animated-button.fill {
+  background: transparent;
+  border: 2px solid var(--ios-blue);
+  color: var(--ios-blue);
+  position: relative;
+  z-index: 1;
+}
+
+.animated-button.fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: var(--ios-blue);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.animated-button.fill:hover {
+  color: white;
+}
+
+.animated-button.fill:hover::before {
+  width: 100%;
+}
+
+.animated-button.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-button.shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-button.shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.5s;
+  opacity: 0;
+}
+
+.animated-button.shine:hover::before {
+  animation: shine 1s;
+}
+
+.animated-button.expand {
+  transition: all 0.3s ease;
+}
+
+.animated-button.expand:hover {
+  transform: scale(1.05);
+}
+
+.animated-button.jelly:hover {
+  animation: jelly 0.5s;
+}
+
+.animated-button.float {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.animated-button.float:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.animated-button.rainbow {
+  background: linear-gradient(
+    90deg,
+    var(--ios-red),
+    var(--ios-orange),
+    var(--ios-yellow),
+    var(--ios-green),
+    var(--ios-blue),
+    var(--ios-purple)
+  );
+  background-size: 400% 100%;
+  animation: rainbow 8s linear infinite;
+}
+
+/* Interactive Buttons */
+.interactive-button {
+  background-color: var(--ios-blue);
+  color: white;
+}
+
+.interactive-button.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.loader {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.interactive-button.toggle-switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  background-color: #1c1c1e;
+}
+
+.switch-track {
+  width: 50px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.switch-thumb {
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.interactive-button.counter {
+  background-color: var(--ios-purple);
+}
+
+.interactive-button.download {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--ios-green);
+}
+
+.progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  transition: width 0.3s ease;
+}
+
+.interactive-button.like {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: white;
+  color: var(--ios-gray);
+  border: 1px solid var(--ios-gray4);
+}
+
+.interactive-button.expand-options {
+  background-color: var(--ios-blue);
+  position: relative;
+}
+
+.options-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transform: translateX(60px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.option-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--ios-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.interactive-button.typing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--ios-green);
+}
+
+.typing-dots {
+  display: flex;
+  gap: 3px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+
+.interactive-button.sound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--ios-purple);
+}
+
+.sound-waves {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  gap: 2px;
+}
+
+.wave {
+  width: 3px;
+  height: 10px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+/* Special Buttons */
+.special-button {
+  color: white;
+}
+
+.special-button.neon {
+  background-color: #000;
+  border: 2px solid var(--ios-blue);
+  box-shadow: 0 0 10px var(--ios-blue), inset 0 0 10px var(--ios-blue);
+  text-shadow: 0 0 5px var(--ios-blue);
+  color: var(--ios-blue);
+}
+
+.special-button.retro {
+  background-color: #222;
+  border: 3px solid #444;
+  box-shadow: 0 4px 0 #000;
+  color: #0f0;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+.special-button.retro:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+.special-button.pixel {
+  background-color: #7e57c2;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  image-rendering: pixelated;
+  box-shadow: 
+    0 4px 0 #5e35b1,
+    0 8px 0 #4527a0;
+}
+
+.special-button.pixel:active {
+  transform: translateY(4px);
+  box-shadow: 
+    0 0 0 #5e35b1,
+    0 4px 0 #4527a0;
+}
+
+.special-button.shadow {
+  background-color: #333;
+  box-shadow: 
+    0 15px 25px rgba(0, 0, 0, 0.6),
+    0 5px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.special-button.shadow:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 20px 35px rgba(0, 0, 0, 0.6),
+    0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+.special-button.liquid {
+  background-color: #4facfe;
+  position: relative;
+  overflow: hidden;
+}
+
+.liquid-effect {
+  position: absolute;
+  top: -80%;
+  left: -20%;
+  width: 140%;
+  height: 200%;
+  background: linear-gradient(
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  transform: rotate(30deg);
+}
+
+.special-button.glitch {
+  background-color: #ff00aa;
+  position: relative;
+}
+
+.glitch-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 255, 255, 0.5);
+  mix-blend-mode: overlay;
+  opacity: 0;
+}
+
+.special-button.paper {
+  background-color: #f5f5f5;
+  color: #333;
+  border: 1px solid #ddd;
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.special-button.metallic {
+  background: linear-gradient(to bottom, #cfcfcf 0%, #9e9e9e 100%);
+  color: #333;
+  border: 1px solid #888;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.special-button.holographic {
+  background: linear-gradient(
+    135deg,
+    #ff00aa,
+    #00aaff,
+    #00ffaa,
+    #ffaa00
+  );
+  background-size: 400% 400%;
+  animation: holographic 5s ease infinite;
+  color: white;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.special-button.comic {
+  background-color: #ffeb3b;
+  color: #333;
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0 #000;
+  font-family: 'Comic Sans MS', cursive;
+  font-weight: bold;
+}
+
+.special-button.comic:active {
+  transform: translate(5px, 5px);
+  box-shadow: none;
+}
+
+.special-button.sketch {
+  background-color: white;
+  color: #333;
+  border: 2px solid #333;
+  box-shadow: 
+    2px 2px 0 #333,
+    -2px -2px 0 #333,
+    2px -2px 0 #333,
+    -2px 2px 0 #333;
+}
+
+.special-button.emoji {
+  background-color: #ffcc00;
+  color: #333;
+  font-size: 18px;
+}
+
+/* Notification */
+.ios-notification {
+  position: fixed;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: top 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.ios-notification.show {
+  top: 20px;
+}
+
+.notification-icon {
+  font-size: 18px;
+}
+
+.notification-text {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shine {
+  0% { opacity: 0; transform: translateX(-100%) rotate(30deg); }
+  20% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(100%) rotate(30deg); }
+}
+
+@keyframes jelly {
+  0%, 100% { transform: scale(1, 1); }
+  25% { transform: scale(0.95, 1.05); }
+  50% { transform: scale(1.05, 0.95); }
+  75% { transform: scale(0.95, 1.05); }
+}
+
+@keyframes holographic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .button-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .ios-container {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .button-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+  
+  button {
+    height: 45px;
+    font-size: 14px;
+  }
+  
+  .button-label {
+    font-size: 12px;
+  }
+}
